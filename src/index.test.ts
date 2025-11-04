@@ -129,7 +129,9 @@ describe('Package class', () => {
       const pkg = new Package(10, 20, 30, 5)
       expect(pkg.volume).toBe(6000)
     })
+  })
 
+  describe('error handling', () => {
     it('should throw InvalidPackageError for negative dimensions', () => {
       expect(() => new Package(-1, 10, 10, 5)).toThrow(InvalidPackageError)
       expect(() => new Package(10, -1, 10, 5)).toThrow(InvalidPackageError)
@@ -158,7 +160,6 @@ describe('Package class', () => {
       expect(() => new Package(10, 10, 10, Infinity)).toThrow(InvalidPackageError)
     })
   })
-
 })
 
 describe('isBulky', () => {
