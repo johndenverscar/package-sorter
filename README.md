@@ -4,39 +4,21 @@ A TypeScript-based package sorting system that classifies packages into differen
 
 ## Prerequisites
 
-- **Node.js**: Version 14 or higher
-- **npm**: Comes with Node.js
-
-To verify your installation:
-```bash
-node --version
-npm --version
-```
+- **Node.js**
+- **npm**
 
 ## Installation
 
-1. Install dependencies:
+1. Install deps:
 ```bash
 npm install
 ```
-
-This will install:
-- TypeScript
-- Jest (testing framework)
-- ts-jest (TypeScript support for Jest)
-- ts-node (TypeScript execution)
-- Type definitions
 
 ## Running Tests
 
 ### Run all tests
 ```bash
 npm test
-```
-
-### Run tests with coverage report
-```bash
-npm run test:coverage
 ```
 
 ## Building the Project
