@@ -88,20 +88,12 @@ describe('sortPackage', () => {
   })
 
   describe('error handling', () => {
-    it('should throw InvalidPackageError for negative width', () => {
-      expect(() => sortPackage(-10, 10, 10, 5)).toThrow(InvalidPackageError)
-    })
 
-    it('should throw InvalidPackageError for negative height', () => {
-      expect(() => sortPackage(10, -10, 10, 5)).toThrow(InvalidPackageError)
-    })
-
-    it('should throw InvalidPackageError for negative length', () => {
-      expect(() => sortPackage(10, 10, -10, 5)).toThrow(InvalidPackageError)
-    })
-
-    it('should throw InvalidPackageError for negative mass', () => {
-      expect(() => sortPackage(10, 10, 10, -5)).toThrow(InvalidPackageError)
+    it('should throw InvalidPackageError for negative dimensions', () => {
+      expect(() => sortPackage(-1, 10, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => sortPackage(10, -1, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => sortPackage(10, 10, -1, 5)).toThrow(InvalidPackageError)
+      expect(() => sortPackage(10, 10, 10, -1)).toThrow(InvalidPackageError)
     })
 
     it('should throw InvalidPackageError for zero dimensions', () => {
@@ -138,15 +130,32 @@ describe('Package class', () => {
       expect(pkg.volume).toBe(6000)
     })
 
-    it('should throw InvalidPackageError for invalid dimensions', () => {
+    it('should throw InvalidPackageError for negative dimensions', () => {
       expect(() => new Package(-1, 10, 10, 5)).toThrow(InvalidPackageError)
-      expect(() => new Package(10, 0, 10, 5)).toThrow(InvalidPackageError)
-      expect(() => new Package(10, 10, 10, -5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, -1, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, -1, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, 10, -1)).toThrow(InvalidPackageError)
     })
 
-    it('should throw InvalidPackageError for non-finite values', () => {
+    it('should throw InvalidPackageError for zero dimensions', () => {
+      expect(() => new Package(0, 10, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 0, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, 0, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, 10, 0)).toThrow(InvalidPackageError)
+    })
+
+    it('should throw InvalidPackageError for NaN values', () => {
       expect(() => new Package(NaN, 10, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, NaN, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, NaN, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, 10, NaN)).toThrow(InvalidPackageError)
+    })
+
+    it('should throw InvalidPackageError for Infinity values', () => {
       expect(() => new Package(Infinity, 10, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, Infinity, 10, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, Infinity, 5)).toThrow(InvalidPackageError)
+      expect(() => new Package(10, 10, 10, Infinity)).toThrow(InvalidPackageError)
     })
   })
 
