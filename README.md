@@ -81,7 +81,7 @@ sortPackage(150, 10, 10, 20)  // REJECTED - bulky AND heavy
 ### Thresholds
 
 A package is considered **bulky** if:
-- Volume >= 1,000,000 cm�, OR
+- Volume >= 1,000,000 cm^3, OR
 - Any dimension (width, height, or length) >= 150 cm
 
 A package is considered **heavy** if:
